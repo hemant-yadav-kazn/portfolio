@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#050505]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Archive | Hemant Yadav</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'silver-main': '#C0C0C0', 
+                        'silver-light': '#E5E4E2',
+                        'void': '#050505',
+                        'glass': 'rgba(255, 255, 255, 0.03)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        sans: ['Josefin Sans', 'sans-serif'],
+                        display: ['Josefin Sans', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'metallic': 'linear-gradient(to right, #C0C0C0, #FFFFFF, #C0C0C0)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { color: #d4d4d4; cursor: none; overflow-x: hidden; }
+        
+        /* NOISE OVERLAY */
+        .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events: none; z-index: 50; opacity: 0.07; }
+
+        /* CURSOR */
+        .cursor-dot { width: 6px; height: 6px; background: #C0C0C0; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(192, 192, 192, 0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.2s ease-out; }
+        body.hovering .cursor-circle { width: 60px; height: 60px; border-color: #FFFFFF; background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(2px); }
+        body.hovering .cursor-dot { transform: translate(-50%, -50%) scale(0.5); }
+
+        /* UTILS */
+        .text-metallic { background: linear-gradient(to bottom, #FFFFFF, #999999); -webkit-background-clip: text; color: transparent; }
+        .entry-row:hover .entry-title { color: #C0C0C0; transform: translateX(10px); }
+        .entry-title { transition: all 0.3s ease; }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="index.html" class="text-2xl font-bold tracking-tighter uppercase group cursor-none-target text-white hover:text-silver-main transition-colors">
+            HY<span class="text-silver-main">.</span> <span class="text-xs tracking-[0.3em] font-normal ml-2 opacity-50">/ ARCHIVE</span>
+        </a>
+    </nav>
+
+    <header class="pt-48 pb-24 px-6 max-w-7xl mx-auto">
+        <h1 class="text-6xl md:text-8xl font-bold uppercase text-white mb-4">Creative <span class="text-silver-main">Dump.</span></h1>
+        <p class="text-gray-500 uppercase tracking-[0.3em] text-sm">Visual experiments. Posters. Menus. Digital.</p>
+    </header>
+
+    <section class="px-6 pb-32 max-w-7xl mx-auto min-h-screen">
+        
+        <div class="hidden md:grid grid-cols-12 text-[10px] uppercase tracking-widest text-gray-600 border-b border-white/10 pb-4 mb-8 gap-8">
+            <div class="col-span-3">Visual Output</div>
+            <div class="col-span-2">Date</div>
+            <div class="col-span-2">Type</div>
+            <div class="col-span-5">Project Name</div>
+        </div>
+
+        <a href="#" class="group entry-row cursor-none-target block py-8 border-b border-white/5 hover:border-white/20 transition-colors">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-3 h-32 overflow-hidden relative border border-white/10">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1000&auto=format&fit=crop" alt="Web Design" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                </div>
+                <div class="md:col-span-2 text-silver-main font-mono text-xs">2025.10</div>
+                <div class="md:col-span-2">
+                    <span class="px-2 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-wider text-gray-400 group-hover:bg-white group-hover:text-black transition-all">Web Design</span>
+                </div>
+                <div class="md:col-span-5">
+                    <h3 class="entry-title text-2xl md:text-3xl font-light text-white uppercase">KAZN Agency Site</h3>
+                    <p class="text-gray-600 text-xs mt-2 uppercase tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">View Project -></p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="group entry-row cursor-none-target block py-8 border-b border-white/5 hover:border-white/20 transition-colors">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-3 h-32 overflow-hidden relative border border-white/10">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1000&auto=format&fit=crop" alt="Menu Design" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                </div>
+                <div class="md:col-span-2 text-gray-500 font-mono text-xs">2025.07</div>
+                <div class="md:col-span-2">
+                    <span class="px-2 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-wider text-gray-400 group-hover:bg-white group-hover:text-black transition-all">Print & Layout</span>
+                </div>
+                <div class="md:col-span-5">
+                    <h3 class="entry-title text-2xl md:text-3xl font-light text-white uppercase">Regatta Dinner Menu</h3>
+                    <p class="text-gray-600 text-xs mt-2 uppercase tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">View Project -></p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="group entry-row cursor-none-target block py-8 border-b border-white/5 hover:border-white/20 transition-colors">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-3 h-32 overflow-hidden relative border border-white/10">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" alt="Social Media" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                </div>
+                <div class="md:col-span-2 text-gray-500 font-mono text-xs">2024.12</div>
+                <div class="md:col-span-2">
+                    <span class="px-2 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-wider text-gray-400 group-hover:bg-white group-hover:text-black transition-all">Social Media</span>
+                </div>
+                <div class="md:col-span-5">
+                    <h3 class="entry-title text-2xl md:text-3xl font-light text-white uppercase">Winter Gala Campaign</h3>
+                    <p class="text-gray-600 text-xs mt-2 uppercase tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">View Project -></p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="group entry-row cursor-none-target block py-8 border-b border-white/5 hover:border-white/20 transition-colors">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-3 h-32 overflow-hidden relative border border-white/10">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=1000&auto=format&fit=crop" alt="Motion" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                </div>
+                <div class="md:col-span-2 text-gray-500 font-mono text-xs">2024.08</div>
+                <div class="md:col-span-2">
+                    <span class="px-2 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-wider text-gray-400 group-hover:bg-white group-hover:text-black transition-all">Motion</span>
+                </div>
+                <div class="md:col-span-5">
+                    <h3 class="entry-title text-2xl md:text-3xl font-light text-white uppercase">Event Recap Edit</h3>
+                    <p class="text-gray-600 text-xs mt-2 uppercase tracking-widest hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">Watch Video -></p>
+                </div>
+            </div>
+        </a>
+
+    </section>
+
+    <footer class="bg-white py-12 px-6 text-center">
+        <p class="text-gray-500 text-xs uppercase tracking-[0.2em]">© 2025 Hemant Yadav. Archive.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorCircle = document.querySelector('.cursor-circle');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(cursorCircle, { x: e.clientX, y: e.clientY, duration: 0.5 });
+        });
+        document.querySelectorAll('.cursor-none-target').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#050505]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Hungry, Be Humble | Hemant Yadav</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'silver-main': '#C0C0C0', 
+                        'silver-light': '#E5E4E2',
+                        'void': '#050505',
+                        'glass': 'rgba(255, 255, 255, 0.03)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        sans: ['Josefin Sans', 'sans-serif'],
+                        display: ['Josefin Sans', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'metallic': 'linear-gradient(to right, #C0C0C0, #FFFFFF, #C0C0C0)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { color: #d4d4d4; cursor: none; overflow-x: hidden; }
+        
+        /* NOISE OVERLAY */
+        .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events: none; z-index: 50; opacity: 0.07; }
+
+        /* CURSOR */
+        .cursor-dot { width: 6px; height: 6px; background: #C0C0C0; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(192, 192, 192, 0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.2s ease-out; }
+        body.hovering .cursor-circle { width: 60px; height: 60px; border-color: #FFFFFF; background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(2px); }
+        body.hovering .cursor-dot { transform: translate(-50%, -50%) scale(0.5); }
+
+        /* TEXT UTILS */
+        .text-metallic { background: linear-gradient(to bottom, #FFFFFF, #999999); -webkit-background-clip: text; color: transparent; }
+        ::selection { background: #C0C0C0; color: #000; }
+        
+        /* ARTICLE IMAGES */
+        .article-img { transition: all 0.7s ease; filter: grayscale(100%); }
+        .article-img:hover { filter: grayscale(0%); transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="index.html" class="text-2xl font-bold tracking-tighter uppercase group cursor-none-target text-white hover:text-silver-main transition-colors">
+            HY<span class="text-silver-main">.</span> <span class="text-xs tracking-[0.3em] font-normal ml-2 opacity-50">/ BACK TO BASE</span>
+        </a>
+    </nav>
+
+    <header class="relative h-[70vh] w-full overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent z-10"></div>
+        <img src="PHOTOS/summer sweetness….jpg" class="w-full h-full object-cover grayscale parallax-img" alt="Toronto Skyline from RCYC">
+        
+        <div class="absolute bottom-0 left-0 w-full p-6 md:p-24 z-20">
+            <span class="inline-block px-3 py-1 border border-silver-main/30 rounded-full text-[10px] text-silver-main uppercase tracking-widest mb-4 backdrop-blur-md">
+                Hospitality Log: RCYC
+            </span>
+            <h1 class="font-display text-5xl md:text-8xl font-bold uppercase leading-[0.9] text-white mb-6">
+                Be Hungry.<br><span class="text-metallic">Be Humble.</span>
+            </h1>
+        </div>
+    </header>
+
+    <article class="max-w-3xl mx-auto px-6 py-24 relative z-20">
+        
+        <div class="prose prose-invert prose-lg leading-relaxed text-gray-400 mb-16">
+            <p class="text-xl md:text-2xl text-white font-light border-l-2 border-silver-main pl-6 italic mb-12">
+                "Growth comes from leaning into discomfort, not dodging it."
+            </p>
+            
+            <p class="mb-6">
+                This summer, waiting tables at the <strong>Royal Canadian Yacht Club</strong> taught me more than I expected. It wasn’t just a job; it was a crash course in showing up, <span class="text-white font-bold">RAW and REAL</span>.
+            </p>
+            <p class="mb-6">
+                I walked in nervous on my first shift, my hands shaky with a tray of flute glasses. By July, I was chatting with sailors and members like old friends, their stories of racing in rough waters pulled me out of my shell. It's the members who welcomed me into their club.
+            </p>
+        </div>
+
+        <div class="my-16 relative group cursor-none-target">
+            <div class="absolute -inset-1 bg-gradient-to-r from-silver-main to-transparent opacity-10 blur-lg group-hover:opacity-20 transition-opacity"></div>
+            <img src="PHOTOS/IMG_0630.JPG" class="relative w-full h-auto rounded-sm article-img shadow-2xl" alt="Fine Dining Setup">
+            <p class="text-[10px] uppercase tracking-widest text-gray-600 mt-2 text-right">Precision in the details</p>
+        </div>
+
+        <div class="prose prose-invert prose-lg leading-relaxed text-gray-400 mb-16">
+            <p class="mb-6">
+                Every guest carried something—a bad day, a big win, a quiet loneliness, and an expectation of <span class="text-white font-bold">EXCELLENCE</span>. I learned to spot it in their eyes and offer a smile or a quick refill to lighten the load.
+            </p>
+            <p class="mb-6">
+                Mistakes hurt. A misheard order or a spilled drink felt like the end of the world to me. But every slammed shift, every fumble, was a chance to carve out <span class="text-white font-bold">STRENGTH</span>. I learned to own it—"My bad, let me fix that for you"—and found people appreciated the <span class="text-white font-bold">HONESTY</span>.
+            </p>
+            <p class="mb-6">
+                I figured out how to stay calm, to move with <span class="text-white font-bold">PURPOSE</span> and intention. My coworkers were my <strong>LIFELINE</strong>. We had each other’s backs, clearing plates or running drinks when someone had a busy section. That’s when I got it: a team isn’t just people working together, it’s people who see you and step up.
+            </p>
+        </div>
+
+        <div class="my-16 relative group cursor-none-target">
+            <div class="absolute -inset-1 bg-gradient-to-r from-silver-main to-transparent opacity-10 blur-lg group-hover:opacity-20 transition-opacity"></div>
+            <img src="PHOTOS/IMG_1261.JPG" class="relative w-full h-auto rounded-sm article-img shadow-2xl" alt="RCYC Interior">
+            <p class="text-[10px] uppercase tracking-widest text-gray-600 mt-2 text-right">The environment demands excellence</p>
+        </div>
+
+        <div class="prose prose-invert prose-lg leading-relaxed text-gray-400 mb-16">
+            <p class="mb-6">
+                I started to see hospitality as more than food and drink; it’s about giving a damn about each and every small detail. And yes, it matters!
+            </p>
+            <h3 class="text-2xl text-white font-bold uppercase mt-12 mb-6">The Best Moment?</h3>
+            <p class="mb-6">
+                A retiree lingering over coffee, sharing a story of a lost friend with me. He didn’t need a rushed service; he needed space. I poured decaf and listened, not because it was my job, but because it <strong>MATTERED</strong>.
+            </p>
+            <p class="mb-6">
+                The menu became second nature. Pair the prime rib with a bold Malbec, not just because it works, but because it feels right. Starting with "Hey, I am Hemant, here to make your night great" wasn’t a line; it was a promise that earned me <strong>TRUST</strong> and <strong>GENUINE</strong> connections.
+            </p>
+            
+            <div class="p-8 border border-white/10 bg-glass mt-12 mb-12">
+                <p class="text-sm uppercase tracking-widest text-silver-main mb-4">Leadership</p>
+                <p class="italic text-gray-300">
+                    None of this would’ve been possible without my managers, <span class="text-white">Saleem Malik, CCM</span> and <span class="text-white">Stephen Tung</span>. Big thanks for the opportunity to grow under your strong leadership. Your steady guidance and high standards pushed me to find my <strong>CONFIDENCE</strong>.
+                </p>
+            </div>
+
+            <p class="mb-6">
+                It showed me I could adapt, connect, and lead <span class="text-white font-bold">NATURALLY</span>. I’m taking that into whatever’s next—whether it’s running events or pitching ideas, I know how to read a room and <strong>DELIVER</strong>.
+            </p>
+            <p class="text-xl text-white mt-12">
+                The future’s wide open, and I’m ready to give it everything, with a little humility to keep me <strong>GROUNDED</strong>.
+            </p>
+        </div>
+
+        <div class="border-t border-white/10 pt-12 flex justify-between items-center">
+            <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Author</p>
+                <p class="text-lg font-bold text-white mt-1">Hemant Yadav</p>
+            </div>
+            <a href="index.html" class="px-6 py-2 border border-white/20 rounded-sm text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-black transition-all cursor-none-target">
+                Next Article ->
+            </a>
+        </div>
+
+    </article>
+
+    <footer class="bg-white py-12 px-6 text-center mt-24">
+        <p class="text-gray-500 text-xs uppercase tracking-[0.2em]">© 2025 Hemant Yadav. Built in Toronto.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // SMOOTH SCROLL
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // CURSOR
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorCircle = document.querySelector('.cursor-circle');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(cursorCircle, { x: e.clientX, y: e.clientY, duration: 0.5 });
+        });
+        document.querySelectorAll('.cursor-none-target').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // PARALLAX HERO
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(".parallax-img", {
+            yPercent: 30, ease: "none",
+            scrollTrigger: { trigger: "header", start: "top top", end: "bottom top", scrub: true }
+        });
+    </script>
+</body>
+</html>

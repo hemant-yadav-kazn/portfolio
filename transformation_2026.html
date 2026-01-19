@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#050505]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 7 Habits | Hemant Yadav</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'silver-main': '#C0C0C0', 'void': '#050505' },
+                    fontFamily: { sans: ['Josefin Sans', 'sans-serif'], display: ['Josefin Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #d4d4d4; } 
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-void min-h-screen">
+
+    <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center bg-void/80 backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="flex items-center gap-2 text-white hover:text-silver-main transition-colors uppercase tracking-widest text-xs font-bold">
+            ← Back to Home
+        </a>
+        <div class="text-white font-bold tracking-tighter uppercase">HY.</div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4">
+        <article class="max-w-3xl mx-auto bg-[#0a0a0a] rounded-sm overflow-hidden">            
+            <div class="p-8 md:p-12 border-b border-white/5">
+                <div class="flex items-center gap-3 mb-6">
+                    <img src="pfp.png" class="w-10 h-10 rounded-full grayscale border border-white/20 object-cover object-center">
+                    <div>
+                        <p class="text-white text-sm font-bold">Hemant Yadav</p>
+                        <p class="text-gray-500 text-xs">Posted 1 day ago • Visual Breakdown</p>
+                    </div>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    2026 transformation
+                </h1>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Stephen Covey's principles are often viewed as "self-help," but I view them as an operating system for leadership. Here is my visual summary of the habits that drive high-performance teams.
+                </p>
+            </div>
+
+            <div class="bg-[#0a0a0a] flex flex-col gap-4 py-4">
+                <img src="transformation 2026/Transformation habits main.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 2.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 3.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 4.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 5.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 6.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 7.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 8.png" class="w-full h-auto shadow-lg">
+                <img src="transformation 2026/Transformation habits 9.png" class="w-full h-auto shadow-lg">
+            </div>
+
+            <div class="p-12 bg-[#0f0f0f] border-t border-white/5 text-center pb-32"> <h3 class="text-white uppercase tracking-widest font-bold mb-6">Found value in this?</h3>
+                
+                <div class="relative inline-block text-left group">
+                    
+                    <button class="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest text-xs hover:bg-silver-main transition-colors flex items-center gap-2 cursor-pointer">
+                        Share On
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-[#111] border border-white/20 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-bottom z-50">
+                        
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://your-site.netlify.app/article-7habits.html" target="_blank" class="block px-4 py-3 text-xs uppercase tracking-widest text-gray-400 hover:bg-white hover:text-black transition-colors border-b border-white/10 text-left">
+                            LinkedIn
+                        </a>
+
+                        <a href="https://twitter.com/intent/tweet?url=https://your-site.netlify.app/article-7habits.html&text=Check out this breakdown of the 7 Habits." target="_blank" class="block px-4 py-3 text-xs uppercase tracking-widest text-gray-400 hover:bg-white hover:text-black transition-colors border-b border-white/10 text-left">
+                            X / Twitter
+                        </a>
+
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://your-site.netlify.app/article-7habits.html" target="_blank" class="block px-4 py-3 text-xs uppercase tracking-widest text-gray-400 hover:bg-white hover:text-black transition-colors border-b border-white/10 text-left">
+                            Facebook
+                        </a>
+
+                        <a href="mailto:?subject=Operational Framework Breakdown&body=I thought you might find this interesting: https://your-site.netlify.app/article-7habits.html" class="block px-4 py-3 text-xs uppercase tracking-widest text-gray-400 hover:bg-white hover:text-black transition-colors text-left">
+                            Email
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="text-center py-8 text-gray-600 text-xs uppercase tracking-widest">
+        © 2025 Hemant Yadav
+    </footer>
+
+</body>
+</html>

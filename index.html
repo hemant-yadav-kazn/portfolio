@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#050505]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Yadav | Hospitality & Ops Leader</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'silver-main': '#C0C0C0', 
+                        'silver-light': '#E5E4E2',
+                        'void': '#050505',
+                        'glass': 'rgba(255, 255, 255, 0.03)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        sans: ['Josefin Sans', 'sans-serif'],
+                        display: ['Josefin Sans', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'metallic': 'linear-gradient(to right, #C0C0C0, #FFFFFF, #C0C0C0)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <style>
+        body {
+            color: #d4d4d4;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        /* --- NOISE OVERLAY (Film Grain) --- */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 50; opacity: 0.07;
+        }
+
+        /* --- SILVER CURSOR --- */
+        .cursor-dot { width: 6px; height: 6px; background: #C0C0C0; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(192, 192, 192, 0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.2s ease-out; }
+        
+        /* Cursor Hover State */
+        body.hovering .cursor-circle { width: 60px; height: 60px; border-color: #FFFFFF; background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(2px); }
+        body.hovering .cursor-dot { transform: translate(-50%, -50%) scale(0.5); }
+
+        /* --- PRELOADER --- */
+        #preloader { position: fixed; inset: 0; background: #050505; z-index: 10000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .counter { font-family: 'Josefin Sans', sans-serif; font-size: 8rem; font-weight: 300; color: #fff; line-height: 1; }
+        .bar { width: 0%; height: 1px; background: linear-gradient(90deg, transparent, #fff, transparent); margin-top: 20px; transition: width 0.1s; }
+
+        /* --- UTILS --- */
+        .text-metallic { background: linear-gradient(to bottom, #FFFFFF, #999999); -webkit-background-clip: text; color: transparent; }
+        ::selection { background: #C0C0C0; color: #000; }
+        .tilt-card { transition: transform 0.1s; transform-style: preserve-3d; perspective: 1000px; }
+
+        /* HIDE SCROLLBAR BUT ALLOW SCROLLING */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="counter">00</div>
+        <div class="bar"></div>
+        <div class="absolute bottom-10 text-xs font-sans uppercase tracking-[0.3em] text-gray-500">Loading...</div>
+    </div>
+
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center mix-blend-difference opacity-0 nav-item">
+        <div class="text-2xl font-bold tracking-tighter uppercase group cursor-none-target text-white">
+            HY<span class="text-silver-main"></span>
+        </div>
+        <div class="flex gap-8 items-center">
+            <a href="#contact" class="px-6 py-2 border border-white/20 rounded-sm text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-black transition-all cursor-none-target">
+                Let's Chat
+            </a>
+        </div>
+    </nav>
+
+    <header class="relative h-screen w-full overflow-hidden flex flex-col items-center">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-void via-void/70 to-transparent z-10"></div>
+            <img src="78.png" class="w-full h-full object-cover opacity-40 grayscale parallax-img" alt="">
+        </div>
+
+        <div class="z-20 w-full h-full flex flex-col justify-between items-center text-center px-4 max-w-6xl py-32">
+            
+            <p class="hero-reveal text-silver-main font-sans text-xs md:text-sm tracking-[0.5em] uppercase font-bold">
+                Hospitality × Events × Motorsport × Social Media
+            </p>
+            
+            <div class="flex-grow flex items-center justify-center">
+                <div class="cursor-none-target inline-block p-10" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-max="15" data-tilt-speed="400">
+                    <h1 class="font-display text-6xl md:text-9xl font-bold uppercase leading-[0.9] tracking-tight">
+                        <div class="overflow-hidden"><span class="hero-reveal block text-white drop-shadow-2xl">Hemant</span></div>
+                        <div class="overflow-hidden"><span class="hero-reveal block text-metallic drop-shadow-2xl">Yadav</span></div>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 opacity-0 hero-fade">
+                <p class="font-sans text-gray-400 text-sm max-w-xs text-center italic">
+                    "I bridge the gap between high-standards hospitality and modern digital marketing."
+                </p>
+            </div>
+            
+        </div>
+    </header>
+
+    <section class="fixed bottom-0 left-0 w-full py-1 bg-white overflow-hidden z-50 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+        <div class="flex whitespace-nowrap marquee-wrapper">
+            <div class="marquee-content text-black font-bold text-sm uppercase tracking-[0.2em] px-2">
+                // Raised ₹2.3M for UNICEF // 30% Sales Growth // RCYC Fine Dining Ops // KAZN Agency Founder //
+            </div>
+            <div class="marquee-content text-black font-bold text-sm uppercase tracking-[0.2em] px-2">
+                // Raised ₹2.3M for UNICEF // 30% Sales Growth // RCYC Fine Dining Ops // KAZN Agency Founder //
+            </div>
+            <div class="marquee-content text-black font-bold text-sm uppercase tracking-[0.2em] px-2">
+                // Raised ₹2.3M for UNICEF // 30% Sales Growth // RCYC Fine Dining Ops // KAZN Agency Founder //
+            </div>
+        </div>
+    </section>
+
+    <section class="relative w-full bg-[#050505] z-30">
+        <div class="grid md:grid-cols-2 min-h-screen">
+            
+            <div class="flex flex-col justify-center p-12 md:p-24 space-y-8 order-2 md:order-1">
+                <h2 class="text-4xl md:text-6xl font-light uppercase leading-tight text-white">
+                    Precision in <br><span class="font-bold text-metallic">Motion.</span>
+                </h2>
+                
+                <div class="w-20 h-1 bg-white"></div>
+
+                <div class="space-y-6 text-gray-400 font-light text-lg leading-relaxed max-w-lg">
+                    <p>
+                        I approach business with a motorsport mindset: success is found in the details. In racing, a fraction of a second in the pit lane determines the podium. In hospitality and business, the same logic applies—efficiency, precision, and anticipation are everything.                    </p>
+                    <p>
+                        Whether I am managing a 500-cover service at the <strong class="text-white">Royal Canadian Yacht Club</strong> or building a digital campaign for <strong class="text-white">KAZN</strong>, my focus is the same: eliminate friction, optimize the workflow, and deliver a flawless experience for the end user.
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">Revenue Growth</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">CRM Integration</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">VIP Client Management</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">Operational Logistics</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">Inventory Control</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">SOP Development</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">Cross-Functional Leadership</span>
+                    <span class="px-4 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-none-target">SEO Optimizaion</span>
+                </div>
+            </div>
+
+            <div class="relative h-[50vh] md:h-auto w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 group order-1 md:order-2">
+                <img src="pfp.png" alt="Hemant Yadav" class="w-full h-full object-cover object-top">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-10 right-10 text-white mix-blend-difference z-10">
+                    <p class="text-xs font-bold uppercase tracking-widest">Toronto, ON</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#050505] relative border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-5xl font-bold uppercase text-white mb-20">The Circuit</h2>
+
+            <div class="space-y-6">
+                <div class="group relative bg-glass border border-glass-border p-8 hover:border-silver-main/50 transition-all duration-500 cursor-none-target">
+                    <div class="absolute top-0 left-0 w-1 h-0 bg-silver-main group-hover:h-full transition-all duration-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-2xl font-bold uppercase text-white">Royal Canadian Yacht Club</h3>
+                        <span class="font-mono text-gray-500 text-sm">2025</span>
+                    </div>
+                    <p class="text-gray-400 font-light mb-4">Executed high-volume service standards for Toronto’s premier private club. Managed logistics for regatta events (500+ daily covers) while maintaining strict fine-dining protocols. Specialized in rapid problem-solving during peak service hours.</p>
+                </div>
+
+                <div class="group relative bg-glass border border-glass-border p-8 hover:border-silver-main/50 transition-all duration-500 cursor-none-target">
+                    <div class="absolute top-0 left-0 w-1 h-0 bg-silver-main group-hover:h-full transition-all duration-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-2xl font-bold uppercase text-white">KAZN</h3>
+                        <span class="font-mono text-gray-500 text-sm">2024 - Present</span>
+                    </div>
+                    <p class="text-gray-400 font-light mb-4">KAZN is my laboratory. It is where I apply my operational knowledge to the digital world. I founded this agency to help health and wellness brands stop shouting at customers and start connecting with them. We don't just make websites; we build 'Vibe Codes'—digital identities that feel as authentic as a face-to-face interaction.</p>
+                </div>
+
+
+                <div class="group relative bg-glass border border-glass-border p-8 hover:border-silver-main/50 transition-all duration-500 cursor-none-target">
+                    <div class="absolute top-0 left-0 w-1 h-0 bg-silver-main group-hover:h-full transition-all duration-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-2xl font-bold uppercase text-white">Amway Global</h3>
+                        <span class="font-mono text-gray-500 text-sm">2024 - Present</span>
+                    </div>
+                    <p class="text-gray-400 font-light mb-4">Directed a sales unit of five to achieve 30% Year-Over-Year growth. Shifted strategy from cold outreach to relationship-based selling, resulting in a 20% increase in client retention. Focused on scalable sales systems rather than one-off wins.</p>
+                </div>
+
+                <div class="group relative bg-glass border border-glass-border p-8 hover:border-silver-main/50 transition-all duration-500 cursor-none-target">
+                    <div class="absolute top-0 left-0 w-1 h-0 bg-silver-main group-hover:h-full transition-all duration-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-2xl font-bold uppercase text-white">UNICEF</h3>
+                        <span class="font-mono text-gray-500 text-sm">2020</span>
+                    </div>
+                    <p class="text-gray-400 font-light mb-4">Developed resilience and persuasion skills in a high-rejection environment. Successfully raised over $38,000 (USD) in direct contributions. Mastered the psychology of the '30-second pitch' to convert passersby into long-term donors.</p>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-[#050505] relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <h2 class="text-5xl font-bold uppercase text-white">Field Notes</h2>
+                <a href="all-entries.html" class="hidden md:block text-silver-main text-xs uppercase tracking-[0.3em] hover:text-white transition-colors cursor-none-target">View All Entries -></a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="group cursor-none-target">
+                    <div class="relative overflow-hidden h-64 mb-6 border border-glass-border">
+                        <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="PHOTOS/clubhouse.jpg" alt="Fine Dining" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-mono text-silver-main">OPS-LOG: 2025</span>
+                        <div class="h-[1px] flex-grow bg-white/10"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white uppercase mb-2 group-hover:text-silver-main transition-colors">High Stakes on the Waterfront</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Reflecting on managing 500+ covers during the summer regatta. Precision planning meets chaos.</p>
+                    <a href="blog-rcyc.html" class="inline-block border-b border-white/30 text-xs uppercase tracking-widest pb-1 text-white hover:border-white transition-colors">Read Article</a>
+                </article>
+
+                <article class="group cursor-none-target">
+                    <div class="relative overflow-hidden h-64 mb-6 border border-glass-border">
+                        <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" alt="Fundraising" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-mono text-silver-main">OPS-LOG: 2020</span>
+                        <div class="h-[1px] flex-grow bg-white/10"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white uppercase mb-2 group-hover:text-silver-main transition-colors">The Psychology of Fundraising</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">How I led my team to raise ₹2.3M. The art of face-to-face communication.</p>
+                    <a href="#" class="inline-block border-b border-white/30 text-xs uppercase tracking-widest pb-1 text-white hover:border-white transition-colors">Read Article</a>
+                </article>
+
+                <article class="group cursor-none-target">
+                    <div class="relative overflow-hidden h-64 mb-6 border border-glass-border">
+                        <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" alt="Agency Work" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-mono text-silver-main">OPS-LOG: CURRENT</span>
+                        <div class="h-[1px] flex-grow bg-white/10"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white uppercase mb-2 group-hover:text-silver-main transition-colors">Building KAZN Agency</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Merging AI tools with traditional marketing strategies for customer acquisition.</p>
+                    <a href="#" class="inline-block border-b border-white/30 text-xs uppercase tracking-widest pb-1 text-white hover:border-white transition-colors">Read Article</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-[#050505] relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-5xl font-bold uppercase text-white mb-2">Mental Takeaways</h2>
+                    <p class="text-silver-main text-xs uppercase tracking-[0.3em]">Strategies · Breakdowns · Mental Models</p>
+                </div>
+                <div class="text-right hidden md:block">
+                    <a href="mental-takeaways.html" class="text-silver-main text-xs uppercase tracking-[0.3em] hover:text-white transition-colors cursor-none-target mb-2 block">View All Takeaways -></a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <a href="article-7habits.html" class="group block cursor-none-target">
+                    <div class="relative overflow-hidden h-80 mb-6 border border-glass-border bg-[#0a0a0a]">
+                        <div class="absolute inset-0 bg-silver-main/10 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="7 Habits/Habits_Cover.png" alt="7 Habits Cover" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        <div class="absolute top-4 right-4 z-20">
+                            <span class="px-3 py-1 border border-white/20 rounded-full text-[10px] text-white uppercase tracking-widest bg-black/50 backdrop-blur-md">
+                                Visual Guide
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-mono text-silver-main">DEC 16 • 8 SLIDES</span>
+                        <div class="h-[1px] flex-grow bg-white/10"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white uppercase mb-2 group-hover:text-silver-main transition-colors">
+                        The 7 Habits: Operational Framework
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                        Stephen Covey's principles are often viewed as "self-help," but I view them as an operating system for leadership.
+                    </p>
+                    <span class="inline-block border-b border-white/30 text-xs uppercase tracking-widest pb-1 text-white group-hover:border-white transition-colors">
+                        Read Full Breakdown
+                    </span>
+                </a>
+
+                <a href="transformation_2026.html" class="group block cursor-none-target">
+                    <div class="relative overflow-hidden h-80 mb-6 border border-glass-border bg-[#0a0a0a]">
+                        <div class="absolute inset-0 bg-silver-main/10 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="transformation 2026/Transformation habits main.png" alt="Transformation Cover" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        <div class="absolute top-4 right-4 z-20">
+                            <span class="px-3 py-1 border border-white/20 rounded-full text-[10px] text-white uppercase tracking-widest bg-black/50 backdrop-blur-md">
+                                Visual Guide
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-mono text-silver-main">DEC 17 • STRATEGY</span>
+                        <div class="h-[1px] flex-grow bg-white/10"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white uppercase mb-2 group-hover:text-silver-main transition-colors">
+                        Transformation 2026
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                        A strategic roadmap for the coming year.
+                    </p>
+                    <span class="inline-block border-b border-white/30 text-xs uppercase tracking-widest pb-1 text-white group-hover:border-white transition-colors">
+                        Read Full Breakdown
+                    </span>
+                </a>
+
+            </div>
+         </div>
+    </section>
+<!--
+    <section class="py-32 px-6 bg-[#050505] relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-5xl font-bold uppercase text-white mb-2">The Archive</h2>
+                    <p class="text-silver-main text-xs uppercase tracking-[0.3em]">Creative Dump: Visuals, Posters, & UI</p>
+                </div>
+                <div class="text-right hidden md:block">
+                    <a href="creative-archive.html" class="text-silver-main text-xs uppercase tracking-[0.3em] hover:text-white transition-colors cursor-none-target mb-2 block">View All Projects -></a>
+                    <p class="text-gray-500 text-sm italic">"Experimental inputs & visual outputs"</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 auto-rows-[300px] h-auto md:h-[800px]">
+                
+                <a href="#" class="md:col-span-2 md:row-span-2 group relative border border-white/10 overflow-hidden cursor-none-target bg-[#0a0a0a]">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700">
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent z-20">
+                        <span class="inline-block px-3 py-1 border border-white/20 rounded-full text-[10px] text-white uppercase tracking-widest mb-2 bg-black/50 backdrop-blur-md">Web Design</span>
+                        <h3 class="text-3xl font-bold text-white uppercase">KAZN Agency Site</h3>
+                        <p class="text-gray-400 text-xs mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">Full stack development + Brand Identity</p>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-span-1 md:row-span-2 group relative border border-white/10 overflow-hidden cursor-none-target bg-[#0a0a0a]">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700">
+                    
+                    <div class="absolute top-4 right-4 z-20">
+                         <span class="inline-block px-3 py-1 border border-white/20 rounded-full text-[10px] text-white uppercase tracking-widest bg-black/50 backdrop-blur-md">Menu Design</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent z-20">
+                        <h3 class="text-xl font-bold text-white uppercase">RCYC Regatta</h3>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-span-1 md:row-span-1 group relative border border-white/10 overflow-hidden cursor-none-target bg-[#0a0a0a]">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent z-20">
+                        <h3 class="text-lg font-bold text-white uppercase">Social Media</h3>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-span-1 md:row-span-1 group relative border border-white/10 overflow-hidden cursor-none-target bg-[#0a0a0a]">
+                    <div class="absolute inset-0 bg-silver-main/10 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700">
+                    <div class="absolute center inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div class="w-12 h-12 rounded-full border border-white flex items-center justify-center backdrop-blur-sm">
+                            <div class="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-1"></div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent z-20">
+                        <h3 class="text-lg font-bold text-white uppercase">Campaigns</h3>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+-->
+
+    <section class="py-32 px-6 bg-[#050505] relative border-t border-white/5 flex flex-col items-center justify-center text-center">
+        
+        <div class="w-[1px] h-24 bg-gradient-to-b from-transparent via-silver-main to-transparent mb-8"></div>
+
+        <h2 class="text-silver-main text-xs uppercase tracking-[0.4em] mb-8">CALL TO ACTION</h2>
+
+        <div class="max-w-3xl">
+            <p class="text-3xl md:text-5xl text-white font-light leading-tight mb-8">
+                <span class="font-bold text-metallic">Partnership and Ambition.</span>
+            </p>
+            
+            <p class="text-gray-400 text-lg md:text-xl leading-relaxed mb-12 font-light">
+                I am looking for environments that value speed and precision. I don't just want a job; I want to own an outcome. If you are looking for someone who can navigate the pressure of a dinner service and the complexity of a digital campaign with equal composure, let’s talk.
+            </p>
+
+            <a href="mailto:hemant.yadav@georgebrown.ca" class="inline-block group relative px-10 py-5 border border-white/30 rounded-sm overflow-hidden transition-all hover:border-white">
+                <span class="relative z-10 text-white font-bold uppercase tracking-widest text-sm group-hover:text-black transition-colors">Let's Chat</span>
+                <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            </a>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-white py-80 px-6 text-center">
+        <h2 class="text-black text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
+            Ready to<br>Deploy?
+        </h2>
+        <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+    
+            <a href="Hemant_Yadav_Resume.pdf" target="_blank" class="px-8 py-4 border-2 border-black text-black font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-all cursor-none-target">
+                View Resume
+            </a>
+            <a href="mailto:hemant.yadav@georgebrown.ca" class="px-8 py-4 bg-black text-white font-bold uppercase tracking-wider hover:bg-gray-800 transition-all cursor-none-target">
+                Email Me
+            </a>
+            <a href="https://www.linkedin.com/in/hemant-yadav-b8a108135" target="_blank" class="px-8 py-4 border-2 border-black text-black font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-all cursor-none-target">
+                LinkedIn
+            </a>
+
+        </div>
+        <p class="text-gray-500 text-xs uppercase tracking-[0.2em]">© 2025 Hemant Yadav. Built in Toronto.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // --- PRELOADER ---
+        const counterElement = document.querySelector('.counter');
+        const barElement = document.querySelector('.bar');
+        const preloader = document.getElementById('preloader');
+        let count = 0;
+        const interval = setInterval(() => {
+            count += Math.floor(Math.random() * 10) + 1;
+            if (count > 100) count = 100;
+            counterElement.innerText = count < 10 ? `0${count}` : count;
+            barElement.style.width = `${count}%`;
+            if (count === 100) { clearInterval(interval); revealSite(); }
+        }, 30);
+
+        function revealSite() {
+            gsap.to(preloader, { yPercent: -100, duration: 1.2, ease: "power4.inOut", delay: 0.5 });
+            gsap.to(".nav-item", { opacity: 1, y: 0, duration: 1, delay: 1.5 });
+            gsap.fromTo(".hero-reveal", { y: 100 }, { y: 0, duration: 1.5, ease: "power4.out", delay: 1.8, stagger: 0.1 });
+            gsap.to(".hero-fade", { opacity: 1, duration: 1, delay: 2.2 });
+        }
+
+        // --- SMOOTH SCROLL ---
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // --- CURSOR ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorCircle = document.querySelector('.cursor-circle');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(cursorCircle, { x: e.clientX, y: e.clientY, duration: 0.5 });
+        });
+        document.querySelectorAll('.cursor-none-target').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // --- PARALLAX ---
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(".parallax-img", {
+            yPercent: 30, ease: "none",
+            scrollTrigger: { trigger: "header", start: "top top", end: "bottom top", scrub: true }
+        });
+        gsap.to(".marquee-content", { xPercent: -100, repeat: -1, duration: 20, ease: "linear" });
+
+        // --- 3D TILT ---
+        const tiltContainer = document.querySelector('.tilt-container');
+        const tiltCard = document.querySelector('.tilt-card');
+        if(tiltContainer && tiltCard) {
+            tiltContainer.addEventListener('mousemove', (e) => {
+                const rect = tiltContainer.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                tiltCard.style.transform = `rotateX(${(y-0.5)*5}deg) rotateY(${(x-0.5)*-5}deg)`;
+            });
+            tiltContainer.addEventListener('mouseleave', () => tiltCard.style.transform = `rotateX(0deg) rotateY(0deg)`);
+        }
+    </script>
+</body>
+</html>
