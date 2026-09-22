@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#050505]">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Psychology of Fundraising | Hemant Yadav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+'silver-main': '#C0C0C0',
+'silver-light': '#E5E4E2',
+'void': '#050505',
+'glass': 'rgba(255, 255, 255, 0.03)',
+'glass-border': 'rgba(255, 255, 255, 0.1)',
+},
+fontFamily: {
+sans: ['Josefin Sans', 'sans-serif'],
+display: ['Josefin Sans', 'sans-serif'],
+},
+backgroundImage: {
+'metallic': 'linear-gradient(to right, #C0C0C0, #FFFFFF, #C0C0C0)',
+}
+}
+}
+}
+</script>
+<style>
+body { color: #d4d4d4; cursor: none; overflow-x: hidden; }
+.noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events: none; z-index: 50; opacity: 0.07; }
+.cursor-dot { width: 6px; height: 6px; background: #C0C0C0; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+.cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(192, 192, 192, 0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.2s ease-out; }
+body.hovering .cursor-circle { width: 60px; height: 60px; border-color: #FFFFFF; background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(2px); }
+body.hovering .cursor-dot { transform: translate(-50%, -50%) scale(0.5); }
+.text-metallic { background: linear-gradient(to bottom, #FFFFFF, #999999); -webkit-background-clip: text; color: transparent; }
+::selection { background: #C0C0C0; color: #000; }
+.article-img { transition: all 0.7s ease; filter: grayscale(100%); }
+.article-img:hover { filter: grayscale(0%); transform: scale(1.02); }
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-circle"></div>
+<nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center mix-blend-difference">
+<a href="index.html" class="text-2xl font-bold tracking-tighter uppercase group cursor-none-target text-white hover:text-silver-main transition-colors">
+<span class="flex items-center gap-3">
+<svg width="34" height="34" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+<circle cx="22" cy="22" r="20" fill="#0a0a0a" stroke="url(#hy-grad)" stroke-width="1.5"/>
+<text x="22" y="28" font-family="Josefin Sans, sans-serif" font-size="16" font-weight="700" fill="url(#hy-grad)" text-anchor="middle" letter-spacing="-1">HY</text>
+<path d="M11 33 L33 33" stroke="url(#hy-grad)" stroke-width="1" opacity="0.5"/>
+<defs><linearGradient id="hy-grad" x1="0" y1="0" x2="44" y2="44"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#888888"/></linearGradient></defs>
+</svg>
+<span class="text-xs tracking-[0.3em] font-normal opacity-50">/ BACK TO BASE</span>
+</span>
+</a>
+</nav>
+<header class="relative h-[70vh] w-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent z-10"></div>
+<img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover grayscale parallax-img" alt="Fundraising">
+<div class="absolute bottom-0 left-0 w-full p-6 md:p-24 z-20">
+<span class="inline-block px-3 py-1 border border-silver-main/30 rounded-full text-[10px] text-silver-main uppercase tracking-widest mb-4 backdrop-blur-md">
+Field Log: UNICEF
+</span>
+<h1 class="font-display text-5xl md:text-8xl font-bold uppercase leading-[0.9] text-white mb-6">
+Thirty Seconds.<br><span class="text-metallic">To Trust.</span>
+</h1>
+</div>
+</header>
+<article class="max-w-3xl mx-auto px-6 py-24 relative z-20">
+<div class="prose prose-invert prose-lg leading-relaxed text-gray-400 mb-16">
+<p class="text-xl md:text-2xl text-white font-light border-l-2 border-silver-main pl-6 italic mb-12">
+"Nobody stops for a stranger. They stop for a story."
+</p>
+<p class="mb-6">
+In 2020, I spent my days on the street with a clipboard, a lanyard, and a script I hated at first. Fundraising for <strong>UNICEF</strong> sounds noble from the outside. From the inside, it's a numbers game built on rejection—dozens of "no thank yous" for every person who slows down.
+</p>
+<p class="mb-6">
+I learned fast that the job had nothing to do with the pitch and everything to do with the first <span class="text-white font-bold">THREE SECONDS</span>. Eye contact, a genuine smile, a question instead of a request. People don't donate to a script; they donate to a person who seems to actually see them.
+</p>
+</div>
+<div class="my-16 relative group cursor-none-target">
+<div class="absolute -inset-1 bg-gradient-to-r from-silver-main to-transparent opacity-10 blur-lg group-hover:opacity-20 transition-opacity"></div>
+<img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop" class="relative w-full h-auto rounded-sm article-img shadow-2xl" alt="Street conversation">
+<p class="text-[10px] uppercase tracking-widest text-gray-600 mt-2 text-right">The pitch is 10% of the conversation</p>
+</div>
+<div class="prose prose-invert prose-lg leading-relaxed text-gray-400 mb-16">
+<p class="mb-6">
+By the end of the campaign, our team had raised over <strong class="text-white">$38,000 USD</strong> in direct contributions. Not through pressure tactics, but through what I started calling the <span class="text-white font-bold">30-SECOND PITCH</span>—a compressed version of trust-building that had to work in the time it takes someone to walk past you on a sidewalk.
+</p>
+<p class="mb-6">
+The framework was simple, even if executing it under pressure wasn't. <strong>Hook</strong> them with a question, not a fact. <strong>Humanize</strong> the cause with one specific story instead of a statistic. <strong>Hand off</strong> the decision back to them—nobody likes being cornered, so the best pitches always left an easy exit.
+</p>
+<h3 class="text-2xl text-white font-bold uppercase mt-12 mb-6">Rejection Was the Curriculum</h3>
+<p class="mb-6">
+I got told no more times in that one summer than in the rest of my life combined. Doors closed, people crossed the street, a few were outright rude. It stopped being personal once I saw the pattern: rejection wasn't a verdict on me, it was just <span class="text-white font-bold">DATA</span>. Every "no" told me something about timing, tone, or approach that I could adjust on the very next conversation.
+</p>
+<p class="mb-6">
+That shift—treating a hard "no" as feedback instead of failure—is the single most useful thing I took out of that job. It's the same instinct I now bring to sales conversations at Amway and to pitching KAZN to a skeptical brand owner. The stakes are different. The psychology is identical.
+</p>
+</div>
+<div class="my-16 relative group cursor-none-target">
+<div class="absolute -inset-1 bg-gradient-to-r from-silver-main to-transparent opacity-10 blur-lg group-hover:opacity-20 transition-opacity"></div>
+<img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=1200&auto=format&fit=crop" class="relative w-full h-auto rounded-sm article-img shadow-2xl" alt="Team debrief">
+<p class="text-[10px] uppercase tracking-widest text-gray-600 mt-2 text-right">Every rejection was a note for the next pitch</p>
+</div>
+<div class="prose prose-invert prose-lg leading-relaxed text-gray-400 mb-16">
+<p class="mb-6">
+The best donors weren't the ones with the most money—they were the ones who felt like they'd been part of a real exchange, not a transaction. I'd rather have a $20 donor who remembers my name than a $200 donor who forgets me the second I walk away.
+</p>
+<p class="text-xl text-white mt-12">
+Persuasion, done honestly, isn't manipulation. It's just clarity delivered with enough warmth that someone's willing to hear it.
+</p>
+</div>
+<div class="border-t border-white/10 pt-12 flex justify-between items-center">
+<div>
+<p class="text-xs uppercase tracking-[0.3em] text-gray-500">Author</p>
+<p class="text-lg font-bold text-white mt-1">Hemant Yadav</p>
+</div>
+<a href="blog-kazn.html" class="px-6 py-2 border border-white/20 rounded-sm text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-black transition-all cursor-none-target">
+Next Article ->
+</a>
+</div>
+</article>
+<footer class="bg-white py-12 px-6 text-center mt-24">
+<p class="text-gray-500 text-xs uppercase tracking-[0.2em]">© 2026 Hemant Yadav. Built in Toronto.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+<script>
+const lenis = new Lenis();
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorCircle = document.querySelector('.cursor-circle');
+document.addEventListener('mousemove', (e) => {
+gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+gsap.to(cursorCircle, { x: e.clientX, y: e.clientY, duration: 0.5 });
+});
+document.querySelectorAll('.cursor-none-target').forEach(el => {
+el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+gsap.registerPlugin(ScrollTrigger);
+gsap.to(".parallax-img", {
+yPercent: 30, ease: "none",
+scrollTrigger: { trigger: "header", start: "top top", end: "bottom top", scrub: true }
+});
+</script>
+</body>
+</html>
