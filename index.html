@@ -152,6 +152,31 @@ scroll-behavior: auto !important;
 .tire-mark, .cursor-dot, .cursor-circle { display: none !important; }
 body { cursor: auto; }
 }
+/* VIBE CODE DEMO */
+.vibe-btn { border-color: rgba(255,255,255,0.2); color: #9ca3af; }
+.vibe-btn.active { background: #fff; color: #000; border-color: #fff; }
+#vibe-panel.vibe-classic { background: #0a0a0a; border-color: rgba(192,192,192,0.3); }
+#vibe-panel.vibe-classic #vibe-tag { color: #C0C0C0; }
+#vibe-panel.vibe-classic #vibe-headline { color: #ffffff; }
+#vibe-panel.vibe-classic #vibe-cta { background: #C0C0C0; color: #000; }
+#vibe-panel.vibe-bold { background: #1a0e00; border-color: rgba(212,175,55,0.5); }
+#vibe-panel.vibe-bold #vibe-tag { color: #D4AF37; }
+#vibe-panel.vibe-bold #vibe-headline { color: #F4D35E; }
+#vibe-panel.vibe-bold #vibe-cta { background: #D4AF37; color: #000; }
+#vibe-panel.vibe-calm { background: #0a0f12; border-color: rgba(143,168,178,0.4); }
+#vibe-panel.vibe-calm #vibe-tag { color: #8FA8B2; }
+#vibe-panel.vibe-calm #vibe-headline { color: #C9D8DC; }
+#vibe-panel.vibe-calm #vibe-cta { background: #8FA8B2; color: #04121a; }
+/* COMMAND PALETTE */
+#cmdk-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 10001; display: none; align-items: flex-start; justify-content: center; padding-top: 12vh; }
+#cmdk-overlay.open { display: flex; }
+#cmdk-box { width: 90%; max-width: 560px; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+#cmdk-input { width: 100%; background: transparent; border: none; outline: none; color: #fff; padding: 18px 20px; font-family: 'Josefin Sans', sans-serif; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+#cmdk-list { max-height: 320px; overflow-y: auto; }
+.cmdk-item { padding: 14px 20px; color: #9ca3af; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; display: flex; justify-content: space-between; }
+.cmdk-item.selected, .cmdk-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.cmdk-hint { font-size: 0.65rem; opacity: 0.5; }
+.cmdk-trigger-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.65rem; color: #9ca3af; }
 </style>
 </head>
 <body>
@@ -172,12 +197,21 @@ body { cursor: auto; }
 <defs><linearGradient id="hy-grad" x1="0" y1="0" x2="44" y2="44"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#888888"/></linearGradient></defs>
 </svg>
 </div>
-<div class="flex gap-8 items-center">
+<div class="flex gap-4 items-center">
+<button id="cmdk-trigger" class="cmdk-trigger-badge cursor-none-target hidden md:inline-flex" type="button">
+<span>⌘K</span><span class="opacity-70">Quick nav</span>
+</button>
 <a href="#contact" class="px-6 py-2 border border-white/20 rounded-sm text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-black transition-all cursor-none-target">
 Let's Chat
 </a>
 </div>
 </nav>
+<div id="cmdk-overlay">
+<div id="cmdk-box">
+<input id="cmdk-input" type="text" placeholder="Type a command or search..." autocomplete="off">
+<div id="cmdk-list"></div>
+</div>
+</div>
 <header class="relative h-screen w-full overflow-hidden flex flex-col items-center">
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-gradient-to-t from-void via-void/70 to-transparent z-10"></div>
@@ -329,6 +363,23 @@ Whether I am coordinating a member event at <strong class="text-white">Lambton G
 <p class="text-white/70 text-xs uppercase tracking-[0.3em]">KAZN, 2024 – Present</p>
 </div>
 </section>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="text-center mb-10">
+<p class="text-silver-main font-mono text-xs uppercase tracking-[0.3em] mb-3">Live Demo</p>
+<h3 class="text-3xl md:text-4xl font-bold uppercase text-white mb-4">Try a Vibe Code</h3>
+<p class="text-gray-500 text-sm max-w-lg mx-auto">This is what KAZN actually sells: not a fixed template, but a brand identity tuned to a mood. Pick one and watch the panel below respond in real time.</p>
+</div>
+<div class="flex justify-center gap-3 mb-8">
+<button class="vibe-btn px-5 py-2 border rounded-full text-xs uppercase tracking-widest transition-all" data-vibe="classic">Classic</button>
+<button class="vibe-btn px-5 py-2 border rounded-full text-xs uppercase tracking-widest transition-all" data-vibe="bold">Bold</button>
+<button class="vibe-btn px-5 py-2 border rounded-full text-xs uppercase tracking-widest transition-all" data-vibe="calm">Calm</button>
+</div>
+<div id="vibe-panel" class="relative rounded-lg border overflow-hidden p-10 md:p-14 text-center transition-all duration-700">
+<p id="vibe-tag" class="text-xs uppercase tracking-[0.4em] mb-4 transition-all duration-700">Brand Voice</p>
+<h4 id="vibe-headline" class="text-2xl md:text-4xl font-bold uppercase mb-4 transition-all duration-700">Precision. Consistency. Trust.</h4>
+<button id="vibe-cta" class="px-6 py-3 rounded-sm text-xs uppercase font-bold tracking-widest transition-all duration-700">Book a Consult</button>
+</div>
+</div>
 <div class="max-w-5xl mx-auto px-6">
 <div class="group relative bg-glass border border-glass-border p-8 hover:border-silver-main/50 transition-all duration-500 cursor-none-target">
 <div class="absolute top-0 left-0 w-1 h-0 bg-silver-main group-hover:h-full transition-all duration-500"></div>
@@ -771,6 +822,107 @@ onComplete: () => spark.remove()
 }
 });
 });
+// --- VIBE CODE LIVE DEMO ---
+const vibeContent = {
+classic: { tag: "Brand Voice: Classic", headline: "Precision. Consistency. Trust.", cta: "Book a Consult" },
+bold: { tag: "Brand Voice: Bold", headline: "Loud. Fast. Unmistakable.", cta: "Let's Move — Now" },
+calm: { tag: "Brand Voice: Calm", headline: "Quiet confidence. Considered. Steady.", cta: "Start a Conversation" }
+};
+const vibePanel = document.getElementById('vibe-panel');
+const vibeTag = document.getElementById('vibe-tag');
+const vibeHeadline = document.getElementById('vibe-headline');
+const vibeCta = document.getElementById('vibe-cta');
+const vibeButtons = document.querySelectorAll('.vibe-btn');
+function setVibe(name) {
+if (!vibePanel) return;
+vibePanel.classList.remove('vibe-classic', 'vibe-bold', 'vibe-calm');
+vibePanel.classList.add('vibe-' + name);
+const content = vibeContent[name];
+vibeTag.textContent = content.tag;
+vibeHeadline.textContent = content.headline;
+vibeCta.textContent = content.cta;
+vibeButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-vibe') === name));
+}
+vibeButtons.forEach(btn => {
+btn.addEventListener('click', () => setVibe(btn.getAttribute('data-vibe')));
+});
+setVibe('classic');
+// --- COMMAND PALETTE (Cmd+K / Ctrl+K) ---
+const cmdkOverlay = document.getElementById('cmdk-overlay');
+const cmdkInput = document.getElementById('cmdk-input');
+const cmdkList = document.getElementById('cmdk-list');
+const cmdkTrigger = document.getElementById('cmdk-trigger');
+const cmdkCommands = [
+{ label: "Go to Top", hint: "Home", action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
+{ label: "Go to The Circuit", hint: "Experience", action: () => scrollToText("The Circuit") },
+{ label: "Go to By The Numbers", hint: "Stats", action: () => scrollToText("By The Numbers") },
+{ label: "Go to Field Notes", hint: "Writing", action: () => scrollToText("Field Notes") },
+{ label: "Go to The Archive", hint: "Creative", action: () => scrollToText("The Archive") },
+{ label: "Copy Email Address", hint: "hemant.yadav@georgebrown.ca", action: () => navigator.clipboard.writeText('hemant.yadav@georgebrown.ca') },
+{ label: "Download Resume", hint: "PDF", action: () => window.open('Hemant_Yadav_Resume.pdf', '_blank') },
+{ label: "Open LinkedIn", hint: "External", action: () => window.open('https://www.linkedin.com/in/hemant-yadav-b8a108135', '_blank') },
+{ label: "Send an Email", hint: "mailto", action: () => window.location.href = 'mailto:hemant.yadav@georgebrown.ca' }
+];
+function scrollToText(text) {
+const headings = document.querySelectorAll('h2');
+for (const h of headings) {
+if (h.textContent.trim().toLowerCase().includes(text.toLowerCase())) {
+h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+return;
+}
+}
+}
+let cmdkSelectedIndex = 0;
+function renderCmdkList(filter) {
+const filtered = cmdkCommands.filter(c => c.label.toLowerCase().includes((filter || '').toLowerCase()));
+cmdkList.innerHTML = '';
+filtered.forEach((cmd, i) => {
+const item = document.createElement('div');
+item.className = 'cmdk-item' + (i === cmdkSelectedIndex ? ' selected' : '');
+item.innerHTML = `<span>${cmd.label}</span><span class="cmdk-hint">${cmd.hint}</span>`;
+item.addEventListener('click', () => { cmd.action(); closeCmdk(); });
+cmdkList.appendChild(item);
+});
+return filtered;
+}
+function openCmdk() {
+cmdkOverlay.classList.add('open');
+cmdkInput.value = '';
+cmdkSelectedIndex = 0;
+renderCmdkList('');
+setTimeout(() => cmdkInput.focus(), 50);
+}
+function closeCmdk() {
+cmdkOverlay.classList.remove('open');
+}
+if (cmdkTrigger) cmdkTrigger.addEventListener('click', openCmdk);
+document.addEventListener('keydown', (e) => {
+if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+e.preventDefault();
+cmdkOverlay.classList.contains('open') ? closeCmdk() : openCmdk();
+}
+if (e.key === 'Escape') closeCmdk();
+});
+if (cmdkOverlay) {
+cmdkOverlay.addEventListener('click', (e) => { if (e.target === cmdkOverlay) closeCmdk(); });
+}
+if (cmdkInput) {
+cmdkInput.addEventListener('input', () => { cmdkSelectedIndex = 0; renderCmdkList(cmdkInput.value); });
+cmdkInput.addEventListener('keydown', (e) => {
+const items = document.querySelectorAll('.cmdk-item');
+if (e.key === 'ArrowDown') { e.preventDefault(); cmdkSelectedIndex = Math.min(cmdkSelectedIndex + 1, items.length - 1); renderCmdkList(cmdkInput.value); }
+if (e.key === 'ArrowUp') { e.preventDefault(); cmdkSelectedIndex = Math.max(cmdkSelectedIndex - 1, 0); renderCmdkList(cmdkInput.value); }
+if (e.key === 'Enter') {
+const filtered = cmdkCommands.filter(c => c.label.toLowerCase().includes(cmdkInput.value.toLowerCase()));
+if (filtered[cmdkSelectedIndex]) { filtered[cmdkSelectedIndex].action(); closeCmdk(); }
+}
+});
+}
+// --- CONSOLE EASTER EGG ---
+console.log('%c HY ', 'background:#0a0a0a; color:#C0C0C0; font-size:20px; font-weight:bold; padding:8px 16px; border:1px solid #C0C0C0;');
+console.log('%cYou\'re the kind of person who checks the console.', 'color:#C0C0C0; font-size:14px; font-weight:bold;');
+console.log('%cThat\'s exactly the kind of curiosity I want on my team. Let\'s talk: hemant.yadav@georgebrown.ca', 'color:#9ca3af; font-size:12px;');
+console.log('%cPress ⌘K (or Ctrl+K) on this site for a shortcut menu, by the way.', 'color:#666; font-size:11px;');
 // --- 3D TILT (VanillaTilt) ---
 if (!prefersReducedMotion && window.VanillaTilt) {
 VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
