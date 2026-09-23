@@ -152,6 +152,38 @@ scroll-behavior: auto !important;
 .tire-mark, .cursor-dot, .cursor-circle { display: none !important; }
 body { cursor: auto; }
 }
+/* KEN BURNS */
+@keyframes kenburns {
+0% { transform: scale(1) translate(0, 0); }
+50% { transform: scale(1.08) translate(-1%, -1%); }
+100% { transform: scale(1) translate(0, 0); }
+}
+.ken-burns { animation: kenburns 22s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .ken-burns { animation: none; } }
+/* SPOTLIGHT GALLERY TILES */
+.cine-tile { --mx: 50%; --my: 50%; }
+.cine-tile .cine-base { transition: filter 0.3s; }
+.cine-tile .cine-spot {
+mask-image: radial-gradient(circle 90px at var(--mx) var(--my), black 0%, transparent 100%);
+-webkit-mask-image: radial-gradient(circle 90px at var(--mx) var(--my), black 0%, transparent 100%);
+opacity: 0;
+transition: opacity 0.2s;
+}
+.cine-tile:hover .cine-spot { opacity: 1; }
+.cine-tile:hover .cine-base { filter: brightness(0.85); }
+/* CINEMATIC VIEWER */
+#cine-viewer { position: fixed; inset: 0; background: #000; z-index: 10005; display: none; flex-direction: column; align-items: center; justify-content: center; }
+#cine-viewer.open { display: flex; }
+.cine-letterbox { position: relative; width: 100%; aspect-ratio: 2.39 / 1; max-height: 80vh; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.cine-letterbox img { width: 100%; height: 100%; object-fit: contain; position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s ease; }
+.cine-letterbox img.active { opacity: 1; }
+.cine-grain { position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); pointer-events: none; opacity: 0.5; }
+.cine-caption { color: #999; font-family: monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 20px; text-align: center; }
+.cine-controls { position: absolute; top: 24px; right: 24px; display: flex; gap: 10px; z-index: 10; }
+.cine-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; }
+.cine-nav:hover { background: rgba(255,255,255,0.2); }
+.cine-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; }
+.cine-btn:hover { background: rgba(255,255,255,0.2); }
 /* COMMAND PALETTE */
 #cmdk-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 10001; display: none; align-items: flex-start; justify-content: center; padding-top: 12vh; }
 #cmdk-overlay.open { display: flex; }
@@ -206,6 +238,16 @@ Let's Chat
 <div id="lap-timer" class="fixed bottom-6 left-6 z-30 font-mono text-[10px] text-white/40 uppercase tracking-widest hidden md:flex items-center gap-2 pointer-events-none">
 <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
 <span>Session Lap: <span id="lap-time">00:00.0</span></span>
+</div>
+<div id="cine-viewer" role="dialog" aria-modal="true" aria-label="Photo reel viewer">
+<div class="cine-letterbox" id="cine-letterbox"></div>
+<p class="cine-caption" id="cine-caption"></p>
+<div class="cine-controls">
+<button class="cine-btn" id="cine-playpause" type="button" aria-label="Play or pause the reel">▶</button>
+<button class="cine-btn" id="cine-close" type="button" aria-label="Close viewer">✕</button>
+</div>
+<button class="cine-nav" id="cine-prev" style="left: 24px;" type="button" aria-label="Previous photo">‹</button>
+<button class="cine-nav" id="cine-next" style="right: 24px;" type="button" aria-label="Next photo">›</button>
 </div>
 <header class="relative h-screen w-full overflow-hidden flex flex-col items-center">
 <div class="absolute inset-0 z-0">
@@ -309,34 +351,43 @@ Whether I am coordinating a member event at <strong class="text-white">Lambton G
 </div>
 </div>
 </div>
-<section class="relative w-full h-[50vh] overflow-hidden my-6">
+<section class="cine-open-single relative w-full h-[50vh] overflow-hidden my-6 cursor-pointer" data-index="1">
 <div class="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-void/40 z-10"></div>
-<img src="PHOTOS/lambton_pergola_sunset.jpg" class="photo-break-img w-full h-full object-cover grayscale" alt="Lambton Golf & Country Club at dusk">
+<img src="PHOTOS/lambton_pergola_sunset.jpg" class="photo-break-img ken-burns w-full h-full object-cover grayscale" alt="Lambton Golf & Country Club at dusk">
 <div class="absolute bottom-10 left-6 md:left-24 z-20">
 <p class="text-white/70 text-xs uppercase tracking-[0.3em]">Lambton Golf & Country Club, Est. 1902</p>
 </div>
 </section>
 <div class="max-w-5xl mx-auto px-6 py-16">
-<p class="text-gray-500 text-xs uppercase tracking-[0.3em] mb-6 reveal-up">Lambton, in Photos</p>
+<div class="flex items-center justify-between mb-6">
+<p class="text-gray-500 text-xs uppercase tracking-[0.3em] reveal-up">Lambton, in Photos</p>
+<button class="cine-open cursor-none-target reveal-up text-[10px] uppercase tracking-widest border border-white/20 rounded-full px-4 py-2 text-gray-400 hover:bg-white hover:text-black transition-all" data-reel="true" type="button">▶ Watch the Reel</button>
+</div>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-<div class="reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border group">
-<img src="PHOTOS/lambton_patio_sunset.jpg" alt="Lambton patio at sunset" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+<div class="cine-tile reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border cursor-pointer" data-index="2">
+<img src="PHOTOS/lambton_patio_sunset.jpg" alt="Lambton patio at sunset" class="cine-base w-full h-full object-cover grayscale">
+<img src="PHOTOS/lambton_patio_sunset.jpg" alt="" class="cine-spot w-full h-full object-cover absolute inset-0" aria-hidden="true">
 </div>
-<div class="reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border group">
-<img src="PHOTOS/lambton_adirondack_dusk.jpg" alt="Adirondack chairs facing the green at dusk" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+<div class="cine-tile reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border cursor-pointer" data-index="3">
+<img src="PHOTOS/lambton_adirondack_dusk.jpg" alt="Adirondack chairs facing the green at dusk" class="cine-base w-full h-full object-cover grayscale">
+<img src="PHOTOS/lambton_adirondack_dusk.jpg" alt="" class="cine-spot w-full h-full object-cover absolute inset-0" aria-hidden="true">
 </div>
-<div class="reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border group">
-<img src="PHOTOS/lambton_dining_setup.jpg" alt="Formal dining service setup at Lambton" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+<div class="cine-tile reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border cursor-pointer" data-index="4">
+<img src="PHOTOS/lambton_dining_setup.jpg" alt="Formal dining service setup at Lambton" class="cine-base w-full h-full object-cover grayscale">
+<img src="PHOTOS/lambton_dining_setup.jpg" alt="" class="cine-spot w-full h-full object-cover absolute inset-0" aria-hidden="true">
 </div>
-<div class="reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border group">
-<img src="PHOTOS/lambton_green_sunset.jpg" alt="Golfers on the green at sunset" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+<div class="cine-tile reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border cursor-pointer" data-index="5">
+<img src="PHOTOS/lambton_green_sunset.jpg" alt="Golfers on the green at sunset" class="cine-base w-full h-full object-cover grayscale">
+<img src="PHOTOS/lambton_green_sunset.jpg" alt="" class="cine-spot w-full h-full object-cover absolute inset-0" aria-hidden="true">
 </div>
-<div class="reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border group">
-<img src="PHOTOS/lambton_cherry_blossom_path.jpg" alt="Cherry blossom path at the Lambton entrance" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
+<div class="cine-tile reveal-up relative h-48 md:h-56 overflow-hidden border border-glass-border cursor-pointer" data-index="6">
+<img src="PHOTOS/lambton_cherry_blossom_path.jpg" alt="Cherry blossom path at the Lambton entrance" class="cine-base w-full h-full object-cover grayscale">
+<img src="PHOTOS/lambton_cherry_blossom_path.jpg" alt="" class="cine-spot w-full h-full object-cover absolute inset-0" aria-hidden="true">
 </div>
-<div class="reveal-up relative h-48 md:h-56 overflow-hidden border border-silver-main/40 group">
-<img src="PHOTOS/lambton_1903_history.jpg" alt="Hemant Yadav beside a Lambton staff photograph, circa 1903" class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700">
-<div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/90 to-transparent">
+<div class="cine-tile reveal-up relative h-48 md:h-56 overflow-hidden border border-silver-main/40 cursor-pointer" data-index="7">
+<img src="PHOTOS/lambton_1903_history.jpg" alt="Hemant Yadav beside a Lambton staff photograph, circa 1903" class="cine-base w-full h-full object-cover grayscale">
+<img src="PHOTOS/lambton_1903_history.jpg" alt="" class="cine-spot w-full h-full object-cover absolute inset-0" aria-hidden="true">
+<div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/90 to-transparent pointer-events-none">
 <p class="text-white text-[10px] uppercase tracking-widest">120+ years of standards, since 1902</p>
 </div>
 </div>
@@ -356,9 +407,9 @@ Whether I am coordinating a member event at <strong class="text-white">Lambton G
 </div>
 </div>
 </div>
-<section class="relative w-full h-[50vh] overflow-hidden my-6">
+<section class="cine-open-single relative w-full h-[50vh] overflow-hidden my-6 cursor-pointer" data-index="0">
 <div class="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-void/40 z-10"></div>
-<img src="PHOTOS/IMG_0630.JPG" class="photo-break-img w-full h-full object-cover grayscale" alt="Fine dining service at RCYC">
+<img src="PHOTOS/IMG_0630.JPG" class="photo-break-img ken-burns w-full h-full object-cover grayscale" alt="Fine dining service at RCYC">
 <div class="absolute bottom-10 left-6 md:left-24 z-20">
 <p class="text-white/70 text-xs uppercase tracking-[0.3em]">Royal Canadian Yacht Club, 2025</p>
 </div>
@@ -595,9 +646,9 @@ Read Full Breakdown
 </div>
 </div>
 </section>
-<section class="relative w-full h-[60vh] overflow-hidden">
+<section class="cine-open-single relative w-full h-[60vh] overflow-hidden cursor-pointer" data-index="8">
 <div class="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-void/40 z-10"></div>
-<img src="PHOTOS/summer sweetness….jpg" class="photo-break-img w-full h-full object-cover grayscale" alt="Toronto skyline from RCYC">
+<img src="PHOTOS/summer sweetness….jpg" class="photo-break-img ken-burns w-full h-full object-cover grayscale" alt="Toronto skyline from RCYC">
 <div class="absolute bottom-10 left-6 md:left-24 z-20">
 <p class="text-white/70 text-xs uppercase tracking-[0.3em]">Toronto, ON</p>
 </div>
@@ -930,6 +981,95 @@ const secs = (elapsed % 60).toFixed(1).padStart(4, '0');
 lapTimeEl.textContent = `${mins}:${secs}`;
 }, 100);
 }
+// --- CINEMATIC PHOTO REEL VIEWER ---
+const cineReel = [
+{ src: 'PHOTOS/IMG_0630.JPG', caption: 'Royal Canadian Yacht Club, 2025' },
+{ src: 'PHOTOS/lambton_pergola_sunset.jpg', caption: 'Lambton Golf & Country Club, Est. 1902' },
+{ src: 'PHOTOS/lambton_patio_sunset.jpg', caption: 'Lambton — Patio at Sunset' },
+{ src: 'PHOTOS/lambton_adirondack_dusk.jpg', caption: 'Lambton — Dusk on the Green' },
+{ src: 'PHOTOS/lambton_dining_setup.jpg', caption: 'Lambton — Formal Dining Service' },
+{ src: 'PHOTOS/lambton_green_sunset.jpg', caption: 'Lambton — Evening Round' },
+{ src: 'PHOTOS/lambton_cherry_blossom_path.jpg', caption: 'Lambton — The Approach' },
+{ src: 'PHOTOS/lambton_1903_history.jpg', caption: '120+ Years of Standards, Since 1902' },
+{ src: 'PHOTOS/summer sweetness….jpg', caption: 'Toronto, ON' },
+{ src: 'PHOTOS/clubhouse.jpg', caption: 'Royal Canadian Yacht Club — Clubhouse' }
+];
+const cineViewer = document.getElementById('cine-viewer');
+const cineLetterbox = document.getElementById('cine-letterbox');
+const cineCaption = document.getElementById('cine-caption');
+const cinePlayPause = document.getElementById('cine-playpause');
+let cineIndex = 0;
+let cineAutoplay = null;
+let cineImgs = [];
+
+// Build letterbox images once
+cineReel.forEach((item, i) => {
+const img = document.createElement('img');
+img.src = item.src;
+img.alt = item.caption;
+img.className = 'ken-burns';
+cineLetterbox.appendChild(img);
+cineImgs.push(img);
+});
+const cineGrain = document.createElement('div');
+cineGrain.className = 'cine-grain';
+cineLetterbox.appendChild(cineGrain);
+
+function cineShow(i) {
+cineIndex = (i + cineReel.length) % cineReel.length;
+cineImgs.forEach((img, idx) => img.classList.toggle('active', idx === cineIndex));
+cineCaption.textContent = cineReel[cineIndex].caption + ` — ${cineIndex + 1} / ${cineReel.length}`;
+}
+function cineOpen(index, autoplay) {
+cineViewer.classList.add('open');
+cineShow(index || 0);
+document.body.style.overflow = 'hidden';
+if (autoplay) cineStartAutoplay();
+}
+function cineClose() {
+cineViewer.classList.remove('open');
+document.body.style.overflow = '';
+cineStopAutoplay();
+}
+function cineStartAutoplay() {
+cinePlayPause.textContent = '❚❚';
+cineStopAutoplay();
+cineAutoplay = setInterval(() => cineShow(cineIndex + 1), 3800);
+}
+function cineStopAutoplay() {
+cinePlayPause.textContent = '▶';
+if (cineAutoplay) { clearInterval(cineAutoplay); cineAutoplay = null; }
+}
+document.getElementById('cine-close').addEventListener('click', cineClose);
+document.getElementById('cine-next').addEventListener('click', () => { cineStopAutoplay(); cineShow(cineIndex + 1); });
+document.getElementById('cine-prev').addEventListener('click', () => { cineStopAutoplay(); cineShow(cineIndex - 1); });
+cinePlayPause.addEventListener('click', () => { cineAutoplay ? cineStopAutoplay() : cineStartAutoplay(); });
+cineViewer.addEventListener('click', (e) => { if (e.target === cineViewer) cineClose(); });
+document.addEventListener('keydown', (e) => {
+if (!cineViewer.classList.contains('open')) return;
+if (e.key === 'Escape') cineClose();
+if (e.key === 'ArrowRight') { cineStopAutoplay(); cineShow(cineIndex + 1); }
+if (e.key === 'ArrowLeft') { cineStopAutoplay(); cineShow(cineIndex - 1); }
+if (e.key === ' ') { e.preventDefault(); cineAutoplay ? cineStopAutoplay() : cineStartAutoplay(); }
+});
+// Gallery tile clicks -> open at that index
+document.querySelectorAll('.cine-tile').forEach((tile) => {
+tile.addEventListener('click', () => cineOpen(parseInt(tile.getAttribute('data-index'), 10), false));
+tile.addEventListener('mousemove', (e) => {
+const rect = tile.getBoundingClientRect();
+tile.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+tile.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+});
+});
+// Single full-bleed hero breaks -> open at that index
+document.querySelectorAll('.cine-open-single').forEach((el) => {
+el.addEventListener('click', () => cineOpen(parseInt(el.getAttribute('data-index'), 10), false));
+});
+// "Watch the Reel" button -> open at 0 with autoplay
+document.querySelectorAll('.cine-open[data-reel="true"]').forEach((btn) => {
+btn.addEventListener('click', (e) => { e.stopPropagation(); cineOpen(0, true); });
+});
+
 // --- CONSOLE EASTER EGG ---
 console.log('%c HY ', 'background:#0a0a0a; color:#C0C0C0; font-size:20px; font-weight:bold; padding:8px 16px; border:1px solid #C0C0C0;');
 console.log('%cYou\'re the kind of person who checks the console.', 'color:#C0C0C0; font-size:14px; font-weight:bold;');
