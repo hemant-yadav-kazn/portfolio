@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#050505]">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemant Yadav — Technical Spec Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: { 'silver-main': '#C0C0C0', 'void': '#050505' },
+fontFamily: { sans: ['Josefin Sans', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+backgroundImage: { 'metallic': 'linear-gradient(to right, #C0C0C0, #FFFFFF, #C0C0C0)' }
+}
+}
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050505'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-size='48' font-weight='bold' fill='%23C0C0C0' text-anchor='middle'%3EHY%3C/text%3E%3C/svg%3E">
+<style>
+body { color: #d4d4d4; }
+.text-metallic { background: linear-gradient(to bottom, #FFFFFF, #999999); -webkit-background-clip: text; color: transparent; }
+.spec-row { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.spec-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: #C0C0C0; text-transform: uppercase; }
+.spec-value { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #fff; }
+@media print {
+body { background: #050505 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.no-print { display: none !important; }
+.print-sheet { box-shadow: none !important; }
+}
+</style>
+</head>
+<body class="min-h-screen py-10 px-4 flex flex-col items-center">
+<div class="no-print mb-6 flex gap-3">
+<button onclick="window.print()" class="px-6 py-3 border border-white/30 rounded-sm text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-black transition-all">Print / Save as PDF</button>
+<a href="index.html" class="px-6 py-3 border border-white/30 rounded-sm text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-black transition-all">Back to Site</a>
+</div>
+<div class="print-sheet w-full max-w-2xl bg-[#0a0a0a] border border-white/15 rounded-lg overflow-hidden shadow-2xl">
+<div class="p-8 border-b border-white/10 flex justify-between items-start">
+<div>
+<p class="spec-label mb-2">Technical Spec Sheet — 2026 Season</p>
+<h1 class="text-4xl font-bold uppercase text-white leading-none">Hemant<br><span class="text-metallic">Yadav</span></h1>
+</div>
+<svg width="52" height="52" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+<circle cx="22" cy="22" r="20" fill="#0a0a0a" stroke="url(#hy-grad)" stroke-width="1.5"/>
+<text x="22" y="28" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="url(#hy-grad)" text-anchor="middle">HY</text>
+<path d="M11 33 L33 33" stroke="url(#hy-grad)" stroke-width="1" opacity="0.5"/>
+<defs><linearGradient id="hy-grad" x1="0" y1="0" x2="44" y2="44"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#888888"/></linearGradient></defs>
+</svg>
+</div>
+<div class="p-8">
+<p class="spec-label mb-4">— Driver Profile —</p>
+<div class="grid grid-cols-2 gap-x-6">
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Role</span><span class="spec-value text-sm">Hospitality & Ops Leader</span></div>
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Base</span><span class="spec-value text-sm">Toronto, ON</span></div>
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Status</span><span class="spec-value text-sm text-green-400">Open to Offers</span></div>
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Contact</span><span class="spec-value text-sm">hemant.yadav@<br>georgebrown.ca</span></div>
+</div>
+</div>
+<div class="p-8 border-t border-white/10">
+<p class="spec-label mb-4">— Teams —</p>
+<div class="grid grid-cols-2 gap-x-6">
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Team 01</span><span class="spec-value text-sm">Lambton Golf & CC</span></div>
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Team 02</span><span class="spec-value text-sm">RCYC</span></div>
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Team 03</span><span class="spec-value text-sm">KAZN (Founder)</span></div>
+<div class="spec-row py-3 flex justify-between"><span class="spec-label">Team 04</span><span class="spec-value text-sm">Amway Global</span></div>
+</div>
+</div>
+<div class="p-8 border-t border-white/10">
+<p class="spec-label mb-4">— Performance Data —</p>
+<div class="grid grid-cols-3 gap-4 text-center">
+<div>
+<p class="text-3xl font-bold text-metallic font-mono">24</p>
+<p class="spec-label mt-1">Events Run</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-metallic font-mono">350+</p>
+<p class="spec-label mt-1">Peak Guests</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-metallic font-mono">$38K</p>
+<p class="spec-label mt-1">Raised, UNICEF</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-metallic font-mono">30%</p>
+<p class="spec-label mt-1">YoY Growth</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-metallic font-mono">20%</p>
+<p class="spec-label mt-1">Retention Lift</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-metallic font-mono">250+</p>
+<p class="spec-label mt-1">Daily Covers</p>
+</div>
+</div>
+</div>
+<div class="p-8 border-t border-white/10 flex items-center justify-between gap-6">
+<div>
+<p class="spec-label mb-2">— Full Portfolio —</p>
+<p class="text-xs text-gray-500 max-w-[200px]">Scan for the full site: case studies, writing, and creative archive.</p>
+</div>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&bgcolor=0a0a0a&color=C0C0C0&data=https://hemant-yadav-kazn.github.io/portfolio/" alt="QR code to portfolio" class="w-28 h-28 border border-white/15 rounded">
+</div>
+</div>
+<p class="no-print text-gray-600 text-xs mt-6 max-w-md text-center">Right-click the QR code above to save it separately — use it on your printed resume or business card.</p>
+</body>
+</html>
